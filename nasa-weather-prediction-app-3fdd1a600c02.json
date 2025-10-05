@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "nasa-weather-prediction-app",
+  "private_key_id": "3fdd1a600c02546ad6b558a3ec3128d504f70d73",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDqZZ8TNqBetiYK\nB/L9eK0tXHRlR7sRk07ipKVQq4DVFqE8TCWIJx6Z88t1bKw7pvcjhABZKSDKcHd4\n1ccWLh8qUJNTqKRFEHoo3hbixOoiUJbnVVlDZfbBgOdMUibIVk/IPo2RWn2y5GIG\nM9KEJkK9Vq4oL05lFp1b95/RiP5m1nS36Gg3DkYio0fLyHLtfg48k7Xg7F+TDXZ1\nlOj0rHkafqYSCkGm3Y45Rg8tyzayABlh38QuNp4sIiA083MKRuvQujXrskINuGIh\n8KfPVwww8GF8VVxl6oYvmy5meIuQ1Pk6KFxWMnaIQcjW6aAhAb40ZYvy2Lq8xk6e\n23XQBOsJAgMBAAECggEARy62SPDxceHSGoDAf85qlRh7Npi6jENWlQiYNa/nr46w\nR23+heMPbYR2mMH4aiMx8WSwcGNHlILkHVuamrdF+qU+oIzZ2il/V7Lec16GlgYw\nVa97LLcl4Szi0TAvm+5uSysH9gjrnGy0AhsxxrUR1osg145KOfPMtPW14L3AOH06\nVP6+vLixIWXqv8Hk4OOupEK5qEP8/TXSBaZhnNL1FsHWF2fGhdFzYVRFi3ML4xVo\n4jlrChpkAw2z8VXNqOEpGqbkbGaBYG5bfJPHy6MLNAztbTsr0OFhaSN0ZsO/P09I\nq6CcizwafqGi6fiU73OuSMMBCREqn4wZhNLXMkcr+wKBgQD9hS3yIfqIi5bjiksk\n42ZnSDXYBaQgTqz9xzd5iRMbTocBroLogm2x7aJg6qLUJAi5iPC68ML7q1W84pbT\nuMxs5DRzzs78jqPWWJEi+V3glcCCT7T8WeOnlwjTNtVACT2t/IHknRUiD0ROF+y+\nDhgplbxOcdNRJxguUZFGZK3XgwKBgQDssI6J3z29PdhNXUiwLZ/1NkU8UGBAibc4\nj5eae2TCUOeFS+h2aqlG78JVi6AERO2Ucp0LuoyA2uEslYCAv2lz8rCxaCeiGIkn\nadAJe8ndBTF8gKGseFdVuUOVn/3fwjzz9KT0P7oxs6LPR0MGTsR85tR8vhjbwFYj\nU1zf3k1hgwKBgDi1xeVX/Hb24rXbhZum0o1f9ctw15nyf3f1TE9/fiqpkkGqC9Z+\n9pLKmXwcgHf754e5PkBTAwrQ9Mjf1uVdfT0Ofz04kcylC7ky7qRoK7vFQ97ifZXF\ndctTWcIFjgZZCtcUmOnOyZ9o0tq1N1v8QyNqP0k85QxONnaGAH1CoDCJAoGBAOwU\nTpgGKzaOcSj5Wn8fguS6dORr5xV4R2ALGVPkr+OBfuvdgshaKu2uR0+8LKcVeUMP\n7sS8FViQ+PfXRo0kXrJf5w2MrbtobaT6TZ6n8fiaLXnZc2jrv3CpkVe0dSyyOMm7\nwqw8xCK+4i2NDrVD64gJVPf3RCQr+77Qb1p8CQKxAoGAeQQi/syRXN/3etxB1+iq\njUlpbysC4xGr++Jky1fYGVVhNK7+tXLNhuRz/DRGvennXBCZFdcfaeZjSF/0h2QP\nE9PO6Rfbj//zwG1XAfb55op2Tdj1/oap6FurJfycQlQ/gdnAqGdHXoCd2Ef4oSDp\nDq/Z/EuBSKC2vuB8mLL+rnU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "colab-vertex-tester@nasa-weather-prediction-app.iam.gserviceaccount.com",
+  "client_id": "107870303052566714258",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/colab-vertex-tester%40nasa-weather-prediction-app.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

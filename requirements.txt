@@ -1,0 +1,11 @@
+fastapi==0.118.0
+uvicorn==0.37.0
+google-cloud-aiplatform==1.111.0
+google-auth==2.23.0
+pydantic==2.5.1
+pydantic-core==2.14.3
+cachetools==5.5.2
+click==8.3.0
+colorama==0.4.6
+starlette==0.48.0
+urllib3==1.26.20
