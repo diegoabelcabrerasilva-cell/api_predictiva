@@ -1,78 +1,37 @@
-# archivo: main.py
-from fastapi import FastAPI
-from pydantic import BaseModel
-from datetime import date
-import math
-from google.cloud import aiplatform
-from google.oauth2 import service_account
 import os
+import json
+from fastapi import FastAPI, HTTPException
+from google.cloud import aiplatform
+from pydantic import BaseModel
 
-# ------------------------------
-# Configuración segura de Service Account
-# ------------------------------
-# Render permite subir secretos, por ejemplo: GOOGLE_APPLICATION_CREDENTIALS_JSON
-# Guardamos el contenido del JSON como variable de entorno y lo escribimos temporalmente
-service_account_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
-
-if service_account_json is None:
+# Verificar variable de entorno
+if "GOOGLE_APPLICATION_CREDENTIALS_JSON" not in os.environ:
     raise Exception("❌ No se encontró la variable de entorno GOOGLE_APPLICATION_CREDENTIALS_JSON")
 
-# Guardamos el JSON en un archivo temporal para usarlo
-KEY_PATH = "/tmp/service_account.json"
-with open(KEY_PATH, "w") as f:
-    f.write(service_account_json)
+# Cargar credenciales de Google Cloud
+credentials_info = json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+aiplatform.init(credentials=credentials_info, project=credentials_info["project_id"], location="us-central1")
 
-credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_PATH
+app = FastAPI(title="API Predictiva")
 
-# ------------------------------
-# Configuración del proyecto y modelo
-# ------------------------------
-PROJECT_ID = "nasa-weather-prediction-app"
-ENDPOINT_ID = "7544016459496685568"
-LOCATION = "us-central1"
+# Modelo de ejemplo para request
+class PredictRequest(BaseModel):
+    feature1: float
+    feature2: float
 
-# ------------------------------
-# Inicializa FastAPI
-# ------------------------------
-app = FastAPI(title="API de Predicción de Temperatura")
+@app.get("/")
+def root():
+    return {"message": "API Predictiva corriendo en Render!"}
 
-# ------------------------------
-# Modelo de entrada
-# ------------------------------
-class PrediccionRequest(BaseModel):
-    fecha: str               # Formato "YYYY-MM-DD"
-    temp_min_c: float = 0
-    precipitacion_mm: float = 0
-    viento_mps: float = 0
+@app.post("/predict")
+def predict(data: PredictRequest):
+    # Aquí pondrías tu lógica real de predicción con Vertex AI
+    result = data.feature1 + data.feature2  # ejemplo de operación
+    return {"prediction": result}
 
-# ------------------------------
-# Endpoint para predicción
-# ------------------------------
-@app.post("/predecir")
-def predecir(req: PrediccionRequest):
-    # Inicializa Vertex AI
-    aiplatform.init(project=PROJECT_ID, location=LOCATION, credentials=credentials)
-    endpoint_name = f"projects/{PROJECT_ID}/locations/{LOCATION}/endpoints/{ENDPOINT_ID}"
-    endpoint = aiplatform.Endpoint(endpoint_name)
-    
-    # Procesa la fecha
-    fecha_obj = date.fromisoformat(req.fecha)
-    dia_del_ano = fecha_obj.timetuple().tm_yday
-    dia_del_ano_sin = math.sin(2 * math.pi * dia_del_ano / 366)
-    dia_del_ano_cos = math.cos(2 * math.pi * dia_del_ano / 366)
-    
-    # Prepara la entrada para el modelo
-    instancia = {
-        "dia_del_ano_sin": dia_del_ano_sin,
-        "dia_del_ano_cos": dia_del_ano_cos,
-        "temp_min_c": req.temp_min_c,
-        "precipitacion_mm": req.precipitacion_mm,
-        "viento_mps": req.viento_mps
-    }
-    
-    # Llama al endpoint
-    prediction = endpoint.predict(instances=[instancia])
-    valor_predicho = prediction.predictions[0]['value']
-    
-    return {"fecha": req.fecha, "temp_max_predicha": valor_predicho}
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+
