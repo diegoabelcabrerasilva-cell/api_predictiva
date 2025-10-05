@@ -1,5 +1,6 @@
-fastapi==0.95.2
-uvicorn==0.23.1
-google-cloud-aiplatform==1.111.0
-google-auth==2.23.0
-pydantic==1.10.12
+fastapi
+uvicorn
+google-cloud-aiplatform
+google-auth
+pydantic
+
